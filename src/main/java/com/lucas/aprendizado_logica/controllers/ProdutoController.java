@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucas.aprendizado_logica.models.Produto;
@@ -27,6 +28,16 @@ public class ProdutoController {
     @PostMapping
     public Produto cadastrar(@RequestBody Produto produto){
         return produtoService.cadastrar(produto);
+    }
+
+    @PostMapping
+    public Produto atualizaEstoque(@RequestParam Long id, @RequestParam int quantidade){
+        return produtoService.atualizarEstoque(id, quantidade);
+    }
+
+    @PostMapping
+    public Produto removerEstoque(@RequestParam Long id, @RequestParam int quantidade){
+        return produtoService.removerEstoque(id, quantidade);
     }
 
 }
