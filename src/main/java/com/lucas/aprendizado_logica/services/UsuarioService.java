@@ -20,7 +20,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public Usuario login(Usuario usuario){
+    public Usuario login1(Usuario usuario){
         Usuario u = usuarioRepository.findByEmail(usuario.getEmail());
         if(u != null && u.getSenha().equals(usuario.getSenha())){
             return u;

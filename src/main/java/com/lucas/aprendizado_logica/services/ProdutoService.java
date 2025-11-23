@@ -22,5 +22,21 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
+    public Produto atualizarEstoque(Long id, int quantidade){
+        Produto p = produtoRepository.findById(id).get();
+        if(quantidade > 0){
+            p.setEstoque(quantidade);
+            return p;
+        }
+        return null;
+    }
     
+    public Produto removerEstoque(Long id, int quantidade){
+        Produto p = produtoRepository.findById(id).get();
+        if(quantidade >= p.getEstoque()){
+            p.setEstoque(p.getEstoque() - quantidade);
+            return p;
+        }
+        return null;
+    }
 }
