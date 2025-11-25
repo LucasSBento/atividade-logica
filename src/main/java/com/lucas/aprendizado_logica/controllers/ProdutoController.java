@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,18 +27,18 @@ public class ProdutoController {
         return produtoService.listar();
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public Produto cadastrar(@RequestBody Produto produto){
         return produtoService.cadastrar(produto);
     }
 
-    @PostMapping
-    public Produto atualizaEstoque(@RequestParam Long id, @RequestParam int quantidade){
+    @PutMapping("/atualizarEstoque/{id}")
+    public Produto atualizaEstoque(@PathVariable Long id, @RequestParam int quantidade){
         return produtoService.atualizarEstoque(id, quantidade);
     }
 
-    @PostMapping
-    public Produto removerEstoque(@RequestParam Long id, @RequestParam int quantidade){
+    @PutMapping("/removerEstoque/{id}")
+    public Produto removerEstoque(@PathVariable Long id, @RequestParam int quantidade){
         return produtoService.removerEstoque(id, quantidade);
     }
 

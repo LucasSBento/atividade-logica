@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lucas.aprendizado_logica.models.Produto;
 import com.lucas.aprendizado_logica.repositories.ProdutoRepository;
@@ -22,6 +23,7 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
+    @Transactional
     public Produto atualizarEstoque(Long id, int quantidade){
         Produto p = produtoRepository.findById(id).get();
         if(quantidade > 0){
@@ -31,9 +33,10 @@ public class ProdutoService {
         return null;
     }
     
+    @Transactional
     public Produto removerEstoque(Long id, int quantidade){
         Produto p = produtoRepository.findById(id).get();
-        if(quantidade >= p.getEstoque()){
+        if(quantidade <= p.getEstoque()){
             p.setEstoque(p.getEstoque() - quantidade);
             return p;
         }
