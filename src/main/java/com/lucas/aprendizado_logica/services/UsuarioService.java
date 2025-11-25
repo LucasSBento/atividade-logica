@@ -27,4 +27,21 @@ public class UsuarioService {
         }
         return null;
     }
+
+    public boolean atualizar1(Long id, String nome, String email, String cpf, String telefone, String senha){
+        Usuario u = usuarioRepository.findById(id).get();
+        if(u != null){
+            u.setNome(nome);
+            u.setEmail(email);
+            u.setCpf(cpf);
+            u.setTelefone(telefone);
+            u.setSenha(senha);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean atualizar(Long id, Usuario usuario){
+        
+    }
 }
