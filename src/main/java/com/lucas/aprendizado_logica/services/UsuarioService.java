@@ -35,6 +35,8 @@ public class UsuarioService {
         return null;
     }
 
+    /*
+    Atualizar desfuncional */
     @Transactional
     public boolean atualizar1(Long id, String nome, String email, String cpf, String telefone, String senha){
         Usuario u = usuarioRepository.findById(id).get();
